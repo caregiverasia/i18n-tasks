@@ -11,9 +11,9 @@ module I18n
           forest = collapse_missing_tree! forest
           if forest.present?
             print_title missing_title(forest)
-            print_table headings: [Rainbow(I18n.t('i18n_tasks.common.locale')).cyan.bright,
+            print_table(headings: [Rainbow(I18n.t('i18n_tasks.common.locale')).cyan.bright,
                                    Rainbow(I18n.t('i18n_tasks.common.key')).cyan.bright,
-                                   I18n.t('i18n_tasks.missing.details_title')] do |t|
+                                   I18n.t('i18n_tasks.missing.details_title')]) do |t|
               t.rows = sort_by_attr!(forest_to_attr(forest)).map do |a|
                 [{ value: Rainbow(format_locale(a[:locale])).cyan, alignment: :center },
                  format_key(a[:key], a[:data]),
